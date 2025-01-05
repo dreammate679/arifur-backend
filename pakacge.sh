@@ -1,0 +1,1 @@
+npm i bcrypt body-parser express express-session mongoose cors cross-env dotenv nodemon jsonwebtoken multer nodemailer
