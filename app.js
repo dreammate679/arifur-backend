@@ -55,6 +55,12 @@ const gallery=require('./Routes/gallery.route');
 
 // })
 
+app.get('/',(req,res)=>{
+    res.send(
+        `<h1>Server is Running</h1>`
+    )
+})
+
 app.use('/api/v1',user);
 app.use('/api/v1/blog',blog);
 app.use('/api/v1/gallery',gallery);
