@@ -4,8 +4,8 @@ const app = express();
 
 
 const allowedOrigin=[
-    'https://www.miashovon.com',
-    'https://admin.miashovon.com',
+    'https://www.arifurrahman.ca',
+    'https://admin.arifurrahman.ca',
     'http://localhost:3000',
     'http://localhost:5173',
 ]
