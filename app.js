@@ -1,14 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const dotenv = require('dotenv');
+dotenv.config({ path: './config/config.env' });
 
 
-const allowedOrigin=[
-    'https://www.arifurrahman.ca',
-    'https://admin.arifurrahman.ca',
-    'http://localhost:3000',
-    'http://localhost:5173',
-]
+const allowedOrigin = process.env.NODE_ENV === 'prod'
+  ? ['https://www.arifurrahman.ca', 'https://admin.arifurrahman.ca']
+  : ['http://localhost:3000', 'http://localhost:5173'];
+
 const corsOptions ={
     origin:allowedOrigin, //allowing only this origin
     credentials:true,            
@@ -20,7 +20,7 @@ app.use(cors(corsOptions));
 const errorMiddleware = require('./Middleware/Error')
 
 const bodyParser = require('body-parser')
-const dotenv = require('dotenv');
+
 const cookieParser = require('cookie-parser');
 // const cloudinary=require('cloudinary')
 // const fileUpload =require('express-fileupload')
@@ -39,13 +39,15 @@ app.use(cookieParser());
 // app.use(fileUpload());
 
 
-dotenv.config({ path: 'F:\\dreammate\\backend\\config\\config.env' });
+
 
 
 //importes all routes
 const user=require('./Routes/user');
 const blog=require('./Routes/blog.route');
 const gallery=require('./Routes/gallery.route');
+const campaign = require('./Routes/campaign.route');
+const stat = require('./Routes/stat.route');
 
 
 
@@ -60,10 +62,12 @@ app.get('/',(req,res)=>{
         `<h1>Server is Running</h1>`
     )
 })
-
+app.use('/api/v1/dashboard',stat);
 app.use('/api/v1',user);
 app.use('/api/v1/blog',blog);
 app.use('/api/v1/gallery',gallery);
+app.use('/api/v1/campaign',campaign);
+
 
 //Middleware to handle erros
 app.use(errorMiddleware)
