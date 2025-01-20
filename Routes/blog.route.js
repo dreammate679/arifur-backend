@@ -4,12 +4,12 @@ const router = Express.Router();
 const  { createBlog, getBlogs, getBlog, updateBlog, deleteBlog, createCategory, getCategories, getCategory, updateCategory, deleteCategory }=require('../Controller/blog.controller.js');
 const { isAuthenticatedMember } = require('../Middleware/checkAuth.js');
 
-router.route('/create').post(isAuthenticatedMember,createBlog);
+router.route('/create').post(createBlog);
 router.route('/get-all').get(getBlogs);
 router.route('/public/get-all').get(getBlogs);
 router.route('/get/:id').get(getBlog);
-router.route('/update/:id').put(isAuthenticatedMember,updateBlog);
-router.route('/delete/:id').delete(isAuthenticatedMember,deleteBlog);
+router.route('/update/:id').put(updateBlog);
+router.route('/delete/:id').delete(deleteBlog);
 
 
 

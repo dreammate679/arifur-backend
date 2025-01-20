@@ -11,6 +11,8 @@ exports.isAuthenticatedMember = async (req, res, next) => {
       token = req.cookies.token;
     }
 
+    console.log(token);
+
     // If no token is found, return an error response
     if (!token) {
       return res.status(401).json({ message: "You need to login first!" });
