@@ -12,6 +12,10 @@ const campaignSchema = new Schema({
     time:{
         type:Date,
     },
+    registration:{
+        type:String,
+       
+    },
     banner:{
         type:String,
        
