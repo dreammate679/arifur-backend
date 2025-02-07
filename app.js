@@ -47,6 +47,7 @@ const blog = require('./Routes/blog.route');
 const gallery = require('./Routes/gallery.route');
 const campaign = require('./Routes/campaign.route');
 const stat = require('./Routes/stat.route');
+const survey = require('./Routes/survey.route');
 
 
 
@@ -66,6 +67,7 @@ app.use('/api/v1', user);
 app.use('/api/v1/blog', blog);
 app.use('/api/v1/gallery', gallery);
 app.use('/api/v1/campaign', campaign);
+app.use('/api/v1/survey', survey);
 
 
 //Middleware to handle erros
