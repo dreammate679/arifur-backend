@@ -37,7 +37,7 @@ const surveySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    lastName: {
+    email: {
         type: String,
         required: true
     }
